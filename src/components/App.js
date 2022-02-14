@@ -6,13 +6,17 @@ import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
 import reducer, { initialState }  from '../reducers/index'; //[x] Within App.js, import the useReducer hook, our application's reducer and initialState object.
 
-import { addOne} from '../actions/index';
+import { addOne, applyNumber} from '../actions/index';
 
 function App() {
 const [state, dispatch] = useReducer(reducer, initialState) //[x] Use useReducer hook to get access to the application state and the dispatch function.
 
-const handle1Click = () => {
-  dispatch(addOne())
+//const handle1Click = () => {
+//  dispatch(addOne())
+//}
+
+const handleAll = (number) => {
+  dispatch(applyNumber(number))
 }
 
   return (
@@ -38,21 +42,21 @@ const handle1Click = () => {
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={handle1Click}/>
-              <CalcButton value={2}/>
-              <CalcButton value={3}/>
+              <CalcButton value={1} onClick={() => handleAll(1)}/> 
+              <CalcButton value={2} onClick={() => handleAll(2)}/>
+              <CalcButton value={3} onClick={() => handleAll(3)}/>
             </div>
 
             <div className="row">
-              <CalcButton value={4}/>
-              <CalcButton value={5}/>
-              <CalcButton value={6}/>
+              <CalcButton value={4} onClick={() => handleAll(4)}/>
+              <CalcButton value={5} onClick={() => handleAll(5)}/>
+              <CalcButton value={6} onClick={() => handleAll(6)}/>
             </div>
 
             <div className="row">
-              <CalcButton value={7}/>
-              <CalcButton value={8}/>
-              <CalcButton value={9}/>
+              <CalcButton value={7} onClick={() => handleAll(7)}/>
+              <CalcButton value={8} onClick={() => handleAll(8)}/>
+              <CalcButton value={9} onClick={() => handleAll(9)}/>
             </div>
 
             <div className="row">
