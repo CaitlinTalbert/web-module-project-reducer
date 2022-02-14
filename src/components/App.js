@@ -6,7 +6,7 @@ import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
 import reducer, { initialState }  from '../reducers/index'; //[x] Within App.js, import the useReducer hook, our application's reducer and initialState object.
 
-import { addOne, applyNumber, changeOperation, clearDisplay} from '../actions/index';
+import { addMemory, addOne, applyNumber, changeOperation, clearDisplay, totalMemory, clearMemory} from '../actions/index';
 
 function App() {
 const [state, dispatch] = useReducer(reducer, initialState) //[x] Use useReducer hook to get access to the application state and the dispatch function.
@@ -27,6 +27,18 @@ const handleClear = () => {
   dispatch(clearDisplay())
 }
 
+const handleAddMemory = () => {
+  dispatch(addMemory())
+}
+
+const handleTotalMemory = () => {
+  dispatch(totalMemory())
+}
+
+const handleClearMemory = () => {
+  dispatch(clearMemory())
+}
+
   return (
     <div className="App">
       <nav className="navbar navbar-dark bg-dark">
@@ -44,9 +56,9 @@ const handleClear = () => {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
-              <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              <CalcButton value={"M+"} onClick={handleAddMemory}/>
+              <CalcButton value={"MR"} onClick={handleTotalMemory}/>
+              <CalcButton value={"MC"} onClick={handleClearMemory}/>
             </div>
 
             <div className="row">
@@ -74,7 +86,7 @@ const handleClear = () => {
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"} onClick={() => handleClear()}/>
+              <CalcButton value={"CE"} onClick={handleClear}/>
             </div>
 
           </form>
