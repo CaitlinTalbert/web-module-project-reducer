@@ -6,7 +6,7 @@ import TotalDisplay from './TotalDisplay';
 import CalcButton from './CalcButton';
 import reducer, { initialState }  from '../reducers/index'; //[x] Within App.js, import the useReducer hook, our application's reducer and initialState object.
 
-import { addOne, applyNumber, changeOperation} from '../actions/index';
+import { addOne, applyNumber, changeOperation, clearDisplay} from '../actions/index';
 
 function App() {
 const [state, dispatch] = useReducer(reducer, initialState) //[x] Use useReducer hook to get access to the application state and the dispatch function.
@@ -21,6 +21,10 @@ const handleAll = (number) => {
 
 const handleOperation = (operation) => {
   dispatch(changeOperation(operation))
+}
+
+const handleClear = () => {
+  dispatch(clearDisplay())
 }
 
   return (
@@ -70,7 +74,7 @@ const handleOperation = (operation) => {
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"}/>
+              <CalcButton value={"CE"} onClick={() => handleClear()}/>
             </div>
 
           </form>
